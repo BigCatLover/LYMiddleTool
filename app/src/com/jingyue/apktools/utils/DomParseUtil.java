@@ -23,7 +23,8 @@ import java.util.*;
 
 public class DomParseUtil {
 
-    public static void parsePluginXml(String path, LocalPluginBean bean) {
+    public static boolean parsePluginXml(String path, LocalPluginBean bean) {
+        boolean isSuccess = true;
         try {
             SAXReader saxReader = new SAXReader();
             Document document = saxReader.read(new File(path));//必须指定文件的绝对路径
@@ -59,7 +60,10 @@ public class DomParseUtil {
 
         } catch (Exception e) {
             LogUtils.e(e);
+            isSuccess = false;
         }
+
+        return isSuccess;
     }
 
 

@@ -269,49 +269,43 @@ public class ObjectStreamUtil {
 
     //解析插件信息
     public static void parsePlugin(File f, List<LocalPluginBean> list,boolean downfinish) {
-        boolean flag = false;
-        LocalPluginBean bean = contain(f.getName(),list);
-        if(bean!=null){
-            if(hasHighVer(f.getPath(),bean)){
-                flag = true;
-            }else {
-                return;
-            }
-        }else {
-            bean = new LocalPluginBean();
-        }
-
         File xml = new File(f, "plugin.xml");
+        LocalPluginBean bean = new LocalPluginBean();
         if (xml.exists()) {
             bean.setPath(f.getPath());
-            DomParseUtil.parsePluginXml(xml.getPath(), bean);
+            if(DomParseUtil.parsePluginXml(xml.getPath(), bean)){
+                LocalPluginBean b = contain(bean.getName(),list);
+                if(b!=null){
+                    if(hasHighVer(b,bean)){
+                        list.remove(b);
+                    }else {
+                        return;
+                    }
+                }
+
+                File res = new File(f, "res");
+                if (res.exists()) {
+                    if (bean.getTag() != null) {
+                        File icon = new File(res, bean.getTag() + ".png");
+                        if (icon.exists()) {
+                            bean.setIcon(icon.getPath());
+                        }
+                    }
+                }
+                if(downfinish){
+                    bean.setUpdate(false);
+                }
+
+                list.add(bean);
+            }
+
         }else {
             return;
         }
-        File res = new File(f, "res");
-        if (res.exists()) {
-            if (bean.getTag() != null) {
-                File icon = new File(res, bean.getTag() + ".png");
-                if (icon.exists()) {
-                    bean.setIcon(icon.getPath());
-                }
-            }
-        }
-        if(downfinish){
-            bean.setUpdate(false);
-        }
-
-        if(!flag){
-            list.add(bean);
-        }
-
     }
 
-    public static boolean hasHighVer(String name,LocalPluginBean bean){
-        String ver = name.substring(name.lastIndexOf("(")+1,name.length()-1);
-        String name1 = bean.getPath();
-        String ver1 = name1.substring(name1.lastIndexOf("(")+1,name1.length()-1);
-        if(ver.compareTo(ver1)>0){
+    public static boolean hasHighVer(LocalPluginBean old,LocalPluginBean now){
+        if(now.getVersion().compareTo(old.getVersion())>0){
             return true;
         }
         return false;
@@ -319,12 +313,11 @@ public class ObjectStreamUtil {
 
     public static LocalPluginBean contain(String name,List<LocalPluginBean> list){
         LocalPluginBean b = null;
-        if(name.contains("}")){
-            String s = name.substring(0,name.lastIndexOf("}")+1);
+        if(name!=null){
             for(LocalPluginBean bean:list){
-                if(bean.getPath().contains(s)){
+                if(bean.getName().contains(name)){
                     b = bean;
-                   break;
+                    break;
                 }
             }
         }
