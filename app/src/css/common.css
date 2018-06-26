@@ -1,0 +1,404 @@
+/*通用按钮样式定义*/
+
+.main_view{
+    -fx-background-color: null;
+    -fx-background-radius: 5;
+    -fx-background-image:url('../res/bg/bg_dream_sky.jpg');
+    -fx-background-image-radius: 5;
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+
+/* 定义按钮默认样式*/
+.button_line_blue{
+  -fx-background-color: transparent;
+  -fx-border-radius: 2;
+  -fx-border-width: 1.5;
+  -fx-border-color : #43B1E0;
+  -fx-alignment: CENTER;
+  -fx-font-family: "Microsoft YaHei";
+  -fx-font-size: 12px;
+  -fx-color: white;
+  -fx-text-fill: #43B1E0;
+}
+
+.button_line_blue:hover{
+  -fx-background-color: #fff;
+  -fx-text-fill: black;
+}
+
+ /*白色按钮*/
+.button_white{
+    -fx-background-radius: 5;
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-font: 12px "Microsoft YaHei";
+}
+.button_white:focused:hover{
+    -fx-background-color: #eee;
+}
+
+/*最小化按钮*/
+.button_minimize{
+    -fx-background-radius: 0;
+    -fx-border-style: null;
+    -fx-background-color: null;
+    -fx-background-image:url("../res/minimize.png");
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+.button_minimize:hover{
+    -fx-background-color: #eee5;
+    //-fx-background-image:url("../res/minimize-hover.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.button_fullscreen{
+    -fx-background-radius: 0;
+    -fx-border-style: null;
+    -fx-background-color: null;
+    -fx-background-image:url("../res/maximize.png");
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+.button_fullscreen:hover{
+    -fx-background-color: #eee5;
+    //-fx-background-image:url("../res/maximize-hover.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.button_unfullscreen{
+    -fx-background-radius: 0;
+    -fx-border-style: null;
+    -fx-background-color: null;
+    -fx-background-image:url("../res/unfullscreen.png");
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+.button_unfullscreen:hover{
+    -fx-background-color: #eee5;
+    //-fx-background-image:url("../res/unfullscreen-hover.png");
+    -fx-background-repeat:no-repeat;
+}
+
+
+.anchorPane_border{
+     -fx-background-color:null;
+    -fx-border-radius:5 5 5 5;
+    -fx-border-width:1.0;
+    -fx-border-color:#999888;
+}
+
+.button_plugin {
+    -fx-pref-width:186;
+    -fx-pref-height:55;
+    -fx-border-radius: 5;
+    -fx-border-width: 0;
+    -fx-border-color : null;
+    -fx-alignment: TOP_LEFT;
+    -fx-font-family: "Microsoft YaHei";
+    -fx-font-size: 21px;
+    -fx-text-fill: white;
+    -fx-background-color: #eee5;
+}
+.button_plugin:hover,
+.button_plugin:pressed{
+    -fx-text-fill: red;
+    -fx-background-color:#eee2;
+    //-fx-effect:innershadow(three-pass-box, red, 10, 0.5, 0, 0);
+}
+
+/*关闭按钮*/
+.button_close_white{
+    -fx-background-radius: 0;
+    -fx-border-style: null;
+    -fx-background-color: null;
+    -fx-background-image:url("../res/close.png");
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+.button_close_white:hover{
+    -fx-background-color: #eee5;
+    //-fx-background-image:url("../res/close-hover.png");
+    -fx-background-repeat:no-repeat;
+}
+
+.button_close{
+    -fx-background-radius: 0;
+    -fx-border-style: null;
+    -fx-background-color: null;
+    -fx-background-image:url("../res/lyg_close.png");
+    -fx-background-position: center center;
+    -fx-background-repeat:no-repeat;
+}
+.button_close:hover{
+    -fx-background-color: #eee5;
+    //-fx-background-image:url("../res/close-hover.png");
+    -fx-background-repeat:no-repeat;
+}
+
+/*ScrollPane透明*/
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+.text_desc{
+    -fx-font-family: "Microsoft YaHei";
+    -fx-font-size: 12px;
+    -fx-fill:white;
+    -fx-text-fill: black;
+}
+
+.text_desc_red{
+    -fx-font-family: "Microsoft YaHei";
+    -fx-font-size: 11px;
+    -fx-fill:white;
+    -fx-text-fill: red;
+}
+
+.button_positive{
+    -fx-border-radius:1.5;
+    -fx-background-radius:1.5;
+    -fx-background-color:#43B1E0;
+    -fx-text-fill:#fff;
+    -fx-font-size:13px;
+    -fx-font-family: "Microsoft YaHei";
+    -fx-text-alignment: CENTER;
+}
+.button_positive:hover{
+    -fx-background-color:#52C1E7;
+}
+.button_positive:pressed{
+    -fx-background-color:#329DD7;
+}
+
+.field{
+    -fx-pref-height: 30;
+    -fx-background-color: null;
+    -fx-border-radius: 0;
+    -fx-border-width: 1;
+    -fx-border-color : #D6D6D6;
+}
+
+ /*白色按钮*/
+.button_negative{
+-fx-border-radius:0;
+    -fx-background-radius: 0;
+    -fx-background-color: gray;
+    -fx-text-fill:#fff;
+    -fx-font: 13px "Microsoft YaHei";
+    -fx-text-alignment: CENTER;
+}
+.button_negative:focused:hover{
+    -fx-background-color: #6a6a6a;
+}
+
+.table-view {
+    -fx-background-color: #fff;
+    -fx-font-size:12px;
+    -fx-border-width: 0.5;
+     -fx-border-color : gray;
+    -fx-padding: 0;
+}
+
+table-view .column-header .sort-order-dots-container{
+-fx-padding: 0 0 0 0;
+}
+
+.table-view :even {
+-fx-background-color: white;
+}
+.table-view :odd {
+-fx-background-color: white;
+}
+.table-view .empty-table {
+-fx-background-color: white;
+}
+
+.table-view .table-cell {
+    -fx-text-fill:#4a4a4a;
+    -fx-alignment: CENTER;
+    -fx-background-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-color : white;
+}
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-cell:filled:selected,
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-cell:selected {
+-fx-background: transparent;
+ -fx-text-fill:#4a4a4a;
+ -fx-border-width: 1;
+ -fx-border-color : white;
+}
+
+.button_normal{
+    -fx-background-color:null;
+    -fx-font-size:12px;
+    -fx-font-family: "Microsoft YaHei";
+    -fx-text-fill:#62bee5;
+    -fx-font-size: 16px;
+    -fx-pref-width:90;
+    -fx-pref-height:36;
+}
+.checkbox_item{
+   -fx-background-color:transparent;
+   -fx-background-radius: 5;
+   -fx-border-width: 0;
+   -fx-font-family: "Microsoft YaHei";
+   -fx-font-size: 12px;
+   -fx-text-fill: #62bee5;
+}
+
+.label_red{
+    -fx-background-color:transparent;
+    -fx-text-fill:red;
+    -fx-font-size:11px;
+    -fx-font-family: "Microsoft YaHei";
+    -fx-text-alignment: CENTER;
+}
+
+.textarea{
+  -fx-background-color: white;
+  -fx-font-family: "Microsoft YaHei";
+  -fx-font-size: 12px;
+}
+
+.textarea .content {
+   -fx-background-color: white;
+   -fx-border-radius: 2;
+   -fx-border-width: 1;
+   -fx-border-color : #bbbbbb;
+}
+.textarea:focused .content {
+-fx-background-insets: 0, 0, 0;
+  -fx-background-color: white;
+  -fx-border-radius: 2;
+  -fx-border-width: 1;
+  -fx-border-color : #bbbbbb;
+}
+
+.button_menu{
+  -fx-background-color: transparent;
+  -fx-background-radius: 0;
+  -fx-border-style: null;
+  -fx-background-color: null;
+  -fx-alignment: CENTER;
+  -fx-font-family: "Microsoft YaHei";
+  -fx-font-size: 12px;
+  -fx-text-fill: black;
+}
+.button_menu:hover{
+  -fx-text-fill: #43B1E0;
+}
+
+.button_noborder{
+  -fx-background-color: transparent;
+  -fx-background-radius: 0;
+  -fx-border-style: null;
+  -fx-background-color: null;
+  -fx-alignment: CENTER;
+  -fx-font-family: "Microsoft YaHei";
+  -fx-font-size: 12px;
+  -fx-text-fill: #43B1E0;
+}
+.label_normal{
+  -fx-alignment: CENTER;
+  -fx-text-alignment: CENTER;
+  -fx-font-family: "Microsoft YaHei";
+  -fx-font-size: 12px;
+  -fx-text-fill: #4a4a4a;
+}
+
+.rect_line_white {
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+     -fx-background-color: null;
+     -fx-border-radius: 5;
+     -fx-border-width: 2;
+     -fx-border-color : white;
+     -fx-padding: 10;
+ }
+
+ .rect_line_blue {
+     -fx-background-color: null;
+     -fx-border-radius: 0;
+     -fx-border-width: 2;
+     -fx-border-color : #43B1E0;
+     -fx-padding: 0;
+ }
+
+.title-pane > .title {
+-fx-background-color: white;
+}
+
+.title-pane > .title:hover {
+    -fx-color: white;
+}
+.titled-pane > .content {
+-fx-background-color: white;
+-fx-border-color: transparent;
+     -fx-color:white
+}
+
+.listview-noborder {
+-fx-background-color: -fx-box-border, -fx-control-inner-background;
+}
+.listview-noborder:focused {
+-fx-background-color: -fx-box-border, -fx-control-inner-background;
+}
+
+.listview-noborder > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+-fx-background-color: white, #43B1E0 ;
+-fx-background-insets: 0, 0 1 1 0 ;
+}
+
+.listview-noborder > .virtual-flow > .clipped-container > .sheet > .list-cell:even {
+-fx-background: white;
+}
+.listview-noborder > .virtual-flow > .clipped-container > .sheet > .list-cell:odd {
+-fx-background: white;
+}
+.listview-noborder > .virtual-flow > .clipped-container > .sheet > .list-cell:empty {
+-fx-background: white;
+}
+.listview-noborder > .virtual-flow > .clipped-container > .sheet > .list-cell:filled {
+-fx-background-color: #bbbbbb, white ;
+-fx-background-insets: 0, 0 1 1 0 ;
+}
+
+
+.listview-noselectbg {
+-fx-background-color: -fx-box-border;
+}
+.listview-noselectbg:focused {
+-fx-background-color: -fx-box-border;
+}
+
+.listview-noselectbg > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+-fx-background-color: #bbbbbb, white ;
+-fx-background-insets: 0, 0 1 1 0 ;
+}
+
+.listview-noselectbg > .virtual-flow > .clipped-container > .sheet > .list-cell:even {
+ -fx-background: white;
+ }
+ .listview-noselectbg > .virtual-flow > .clipped-container > .sheet > .list-cell:odd {
+ -fx-background: white;
+ }
+ .listview-noselectbg > .virtual-flow > .clipped-container > .sheet > .list-cell:empty {
+ -fx-background: white;
+ }
+
+ .listview-noselectbg > .virtual-flow > .clipped-container > .sheet > .list-cell:filled {
+ -fx-background-color: #bbbbbb, white ;
+ -fx-background-insets: 0, 0 1 1 0 ;
+ }
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane fx:id="container" prefHeight="280.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox fx:id="left" prefHeight="130" prefWidth="150" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="0">
+            <children>
+                <Label prefHeight="30" prefWidth="150" styleClass="label_normal" text="左上" >
+                </Label>
+                <AnchorPane >
+                    <VBox.margin>
+                        <Insets left="30" top="5"/>
+                    </VBox.margin>
+                    <children>
+                        <AnchorPane prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: null;" styleClass="rect_line_white" />
+                        <ImageView fx:id="lefttop" fitHeight="90.0" fitWidth="90.0">
+                        </ImageView>
+                        <ImageView fx:id="click3" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="22.0">
+                            <image>
+                                <Image url="@../../../../../res/add.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="del_lefttop" prefHeight="25" prefWidth="150" styleClass="button_noborder" text="删除" />
+            </children>
+        </VBox>
+
+        <VBox fx:id="right" prefHeight="130" prefWidth="150" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="0">
+            <children>
+                <Label prefHeight="30" prefWidth="150" styleClass="label_normal" text="右上" ></Label>
+                <AnchorPane>
+                    <VBox.margin>
+                        <Insets left="30" top="5"/>
+                    </VBox.margin>
+                    <children>
+                        <AnchorPane prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: null;" styleClass="rect_line_white" />
+                        <ImageView fx:id="righttop" fitHeight="90.0" fitWidth="90.0" />
+                        <ImageView fx:id="click" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="22.0">
+                            <image>
+                                <Image url="@../../../../../res/add.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="del_righttop" prefHeight="25" prefWidth="150" styleClass="button_noborder" text="删除" >
+                </Button>
+            </children>
+        </VBox>
+
+        <VBox prefHeight="130" prefWidth="150" AnchorPane.topAnchor="140" AnchorPane.leftAnchor="10">
+            <children>
+                <Label prefHeight="30" prefWidth="150" styleClass="label_normal" text="左下" >
+                </Label>
+                <AnchorPane>
+                    <VBox.margin>
+                        <Insets left="30" top="5" />
+                    </VBox.margin>
+                    <children>
+                        <AnchorPane prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: null;" styleClass="rect_line_white" />
+                        <ImageView fx:id="leftbottom" fitHeight="90.0" fitWidth="90.0" />
+                        <ImageView fx:id="click2" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="21.0">
+                            <image>
+                                <Image url="@../../../../../res/add.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="del_leftbottom" prefHeight="25" prefWidth="150" styleClass="button_noborder" text="删除" >
+                </Button>
+            </children>
+        </VBox>
+
+        <VBox prefHeight="130" prefWidth="150"  AnchorPane.topAnchor="140" AnchorPane.rightAnchor="10">
+            <children>
+                <Label prefHeight="30" prefWidth="150" styleClass="label_normal" text="右下" >
+                </Label>
+                <AnchorPane>
+                    <VBox.margin>
+                        <Insets left="30" top="5" />
+                    </VBox.margin>
+                    <children>
+                        <AnchorPane prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: null;" styleClass="rect_line_white" />
+                        <ImageView fx:id="rightbottom" fitHeight="90.0" fitWidth="90.0" />
+                        <ImageView fx:id="click1" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="21.0">
+                            <image>
+                                <Image url="@../../../../../res/add.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="del_rightbottom" prefHeight="25" prefWidth="150" styleClass="button_noborder" text="删除" >
+                </Button>
+            </children>
+        </VBox>
+
+    </children>
+
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+
+</AnchorPane>

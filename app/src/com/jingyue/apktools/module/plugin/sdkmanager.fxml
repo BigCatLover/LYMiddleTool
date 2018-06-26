@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.plugin.SdkManager">
+    <children>
+        <AnchorPane layoutX="0.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #eeee;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="btnClose" layoutX="615.0" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close" />
+            <Label layoutX="12.0" prefHeight="36.0" prefWidth="86.0" text="渠道SDK管理" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="36.0" prefHeight="46.0" prefWidth="649.0">
+            <children>
+                <ChoiceBox fx:id="choiceType" layoutX="268.0" layoutY="7.0" prefHeight="30.0" prefWidth="86.0" />
+                <Button fx:id="multiDownload" layoutX="553.0" layoutY="7.0" mnemonicParsing="false" onAction="#MultiDownload" styleClass="button_positive" text="批量下载" />
+                <TextField fx:id="searchTF" layoutX="370.0" layoutY="7.0" prefHeight="30.0" prefWidth="167.0" />
+                <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="508.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../res/lyg_search_btn.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <ListView fx:id="sdkList" layoutX="8.0" layoutY="117.0" prefHeight="376.0" prefWidth="631.0" styleClass="listview-noselectbg"/>
+      <HBox layoutX="41.0" layoutY="81.0" prefHeight="36.0" prefWidth="631.0">
+         <children>
+            <CheckBox fx:id="checkall" alignment="CENTER" mnemonicParsing="false" prefHeight="36" text="全选" />
+            <Label text="SDK名称" alignment="CENTER" prefWidth="109.0" prefHeight="36" />
+            <Label text="SDK版本" alignment="CENTER" prefWidth="100.0" prefHeight="36"/>
+            <Label text="插件版本" alignment="CENTER" prefWidth="100.0" prefHeight="36"/>
+            <Label text="更新说明" alignment="CENTER" prefWidth="105.0" prefHeight="36"/>
+            <Label text="操作" alignment="CENTER" prefWidth="50.0" prefHeight="36"/>
+         </children>
+      </HBox>
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+
+</AnchorPane>

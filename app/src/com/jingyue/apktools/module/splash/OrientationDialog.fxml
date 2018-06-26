@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane prefHeight="120.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.splash.OrientationDialog">
+    <children>
+        <AnchorPane layoutX="0.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #eeee;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="btnClose" AnchorPane.rightAnchor="5" layoutY="0.0" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close" />
+                <Label layoutX="15.0" prefHeight="30.0" prefWidth="68.0" text="横竖屏选择" />
+            </children>
+        </AnchorPane>
+        <RadioButton fx:id="horizontal" text="横屏" layoutY="55" AnchorPane.leftAnchor="30" ></RadioButton>
+        <RadioButton fx:id="vertical" text="竖屏" layoutY="55" AnchorPane.rightAnchor="30" ></RadioButton>
+      <Button fx:id="ok" layoutX="100.0" layoutY="82.0" mnemonicParsing="false" styleClass="button_positive" onAction="#next" text="确定" />
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+</AnchorPane>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="libutil">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib.Utils/libs/commons-io-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib.Utils/libs/jpinyin-1.1.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib.Utils/libs/zip4j_1.3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LYMiddleTools.iml" filepath="$PROJECT_DIR$/LYMiddleTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib.Res/lib.Res.iml" filepath="$PROJECT_DIR$/lib.Res/lib.Res.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib.Utils/lib.Utils.iml" filepath="$PROJECT_DIR$/lib.Utils/lib.Utils.iml" />
+    </modules>
+  </component>
+</project>

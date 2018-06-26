@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.setting.SystemSetting">
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+   <children>
+       <AnchorPane layoutX="0.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #eeee;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <children>
+               <Button fx:id="btnClose" layoutX="465.0" layoutY="1.0" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close" />
+            <Label layoutX="7.0" prefHeight="30.0" prefWidth="57.0" text="系统设置" />
+           </children>
+       </AnchorPane>
+      <HBox layoutX="14.0" layoutY="84.0" prefHeight="32.0" prefWidth="486.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="103.0" text="游戏导出路径：" />
+             <TextField fx:id="outputPath" prefHeight="38.0" prefWidth="284.0" styleClass="field">
+                 <HBox.margin>
+                     <Insets right="10.0" />
+                 </HBox.margin>
+             </TextField>
+            <Button fx:id="select" mnemonicParsing="false" onAction="#selectPath" prefHeight="25.0" prefWidth="70.0" styleClass="button_positive" text="选择" />
+         </children>
+      </HBox>
+   </children>
+
+</AnchorPane>

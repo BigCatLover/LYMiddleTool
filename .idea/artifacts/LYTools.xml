@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="LYTools">
+    <output-path>$PROJECT_DIR$/out/artifacts/LYTools</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.jingyue.apktools.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="test" />
+        <option name="vendor" value="laoyuegou" />
+        <option name="version" value="1.0.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="app.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/app/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="app" />
+        <element id="module-output" name="lib.Utils" />
+        <element id="library" level="project" name="applib" />
+        <element id="library" level="project" name="libutil" />
+      </element>
+    </root>
+  </artifact>
+</component>

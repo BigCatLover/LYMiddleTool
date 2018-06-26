@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: F:\zhanglei\code\LYMiddleTools\app\src\com\jingyue\apktool
+ s
+Main-Class: com.jingyue.apktools.Main
+

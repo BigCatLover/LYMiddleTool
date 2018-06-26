@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<AnchorPane fx:id="container" prefHeight="120" prefWidth="162" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane fx:id="splash" prefHeight="94" prefWidth="139" AnchorPane.leftAnchor="13" AnchorPane.topAnchor="13">
+            <children>
+                <AnchorPane fx:id="paneBorder" prefHeight="94" prefWidth="139" style="-fx-background-color: null;" styleClass="rect_line_blue" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" />
+                <ImageView fx:id="image" fitHeight="90" fitWidth="135" AnchorPane.leftAnchor="2" AnchorPane.topAnchor="2" >
+                    <image >
+                        <Image url="@../../../../../res/lyg_float.png" />
+                    </image>
+                </ImageView>
+                <Region fx:id="shade" prefHeight="90" prefWidth="135" AnchorPane.leftAnchor="2" AnchorPane.topAnchor="2" style="-fx-background-color: #7777;" visible="false"></Region>
+            </children>
+        </AnchorPane>
+
+        <Button fx:id="del" layoutX="68.0" layoutY="110.0" styleClass="button_noborder" text="删除" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="110.0" />
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+</AnchorPane>

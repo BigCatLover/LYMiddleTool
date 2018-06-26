@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="applib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/apktool.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/asm-debug-all-5.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/gson-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/jaxen-1.1-beta-6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/okhttp-3.10.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/okio-1.14.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/d2j-base-cmd-2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dex-ir-2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dex-reader-2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dex-reader-api-2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dex-tools-2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/dex-translator-2.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/app/libs/apktool.jar!/" />
+    </SOURCES>
+  </library>
+</component>

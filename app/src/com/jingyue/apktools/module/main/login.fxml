@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="480.0" prefWidth="400.0" styleClass="main_view" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.main.Login">
+    <children>
+        <AnchorPane layoutX="80.0" prefHeight="30.0" prefWidth="480.0" style="-fx-background-color: #eee2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Button fx:id="btnMinimized" mnemonicParsing="false" onAction="#minimized" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" style="" styleClass="button_minimize" text="" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="btnClose" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close_white" text="" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <rotationAxis>
+                                <Point3D />
+                            </rotationAxis>
+                        </Button>
+                    </children>
+                </HBox>
+                <Label fx:id="loginTitle" layoutX="14.0" layoutY="0.0" style="-fx-text-fill:#fff;" alignment="CENTER" prefHeight="30" text="登录" textAlignment="JUSTIFY">
+                      <font>
+                          <Font name="Microsoft YaHei" size="15.0" />
+                      </font>
+                  </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="paneUIContainer" layoutY="78.0" prefHeight="297.0" prefWidth="480.0" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
+            <children>
+                <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="160.0" layoutY="-20.0" preserveRatio="true" style="-fx-alignment:CENTER;">
+                    <image>
+                        <Image url="@../../../../../res/lyg_float.png" />
+                    </image>
+                </ImageView>
+                <Text fx:id="textTitle" fill="WHITE" layoutX="141.0" layoutY="109.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ApkToolPlus" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font name="Microsoft YaHei" size="20.0" />
+                    </font>
+                    <effect>
+                        <Bloom />
+                    </effect>
+                    <BorderPane.margin>
+                        <Insets bottom="5.0" />
+                    </BorderPane.margin>
+                </Text>
+                <Label layoutX="40.0" layoutY="160.0" text="用户名：" styleClass="checkbox_item"/>
+                <Label layoutX="53.0" layoutY="202.0" text="密码：" styleClass="checkbox_item"/>
+                <TextField fx:id="account" layoutX="92.0" layoutY="155.0" prefHeight="26.0" prefWidth="268.0" />
+                <PasswordField fx:id="password" layoutX="92.0" layoutY="197.0" prefHeight="27.0" prefWidth="268.0" />
+                <CheckBox fx:id="autoLogin" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" styleClass="checkbox_item" text="自动登录" />
+                <CheckBox fx:id="rememberPw" layoutX="278.0" layoutY="236.0" mnemonicParsing="false" styleClass="checkbox_item" text="记住密码" />
+                <Button fx:id="btnLogin" layoutX="46.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="316.0" styleClass="button_positive" text="登录" />
+            <Label fx:id="errHint" alignment="CENTER" layoutX="43.0" layoutY="258.0" prefHeight="17.0" prefWidth="316.0" styleClass="label_red" text="登录失败" visible="false" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="398.0" layoutY="352.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #eee2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Button fx:id="tryUse" layoutX="1.0" layoutY="7.0" onAction="#tryuse" styleClass="button_normal" text="一键试用" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="1.0">
+                </Button>
+                <HBox layoutX="775.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" />
+                  <Button fx:id="forgotPw" layoutX="220.0" layoutY="7.0" onAction="#forgotPw" styleClass="button_normal" text="忘记密码" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="90.0">
+                  </Button>
+                  <Button fx:id="regist" layoutX="309.0" layoutY="7.0" onAction="#regist" styleClass="button_normal" text="免费注册" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="1.0">
+                  </Button>
+            </children>
+        </AnchorPane>
+
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+</AnchorPane>

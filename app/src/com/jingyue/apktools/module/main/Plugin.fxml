@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane fx:id="pluginContainer" prefHeight="50.0" prefWidth="186.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fx:id="pluginIcon" AnchorPane.topAnchor="2.5" fitHeight="45.0" fitWidth="45.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-alignment:CENTER;">
+        </ImageView>
+        <HBox AnchorPane.leftAnchor="65" AnchorPane.topAnchor="0" prefHeight="49.0">
+            <children>
+                <Label fx:id="pluginname" prefHeight="45.0" styleClass="text_desc" text="插件名称" />
+                <Region prefWidth="10"/>
+                <Label fx:id="update" prefHeight="45.0" styleClass="text_desc_red" text="更新" visible="false" />
+            </children>
+        </HBox>
+    </children>
+
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+
+    </stylesheets>
+
+</AnchorPane>

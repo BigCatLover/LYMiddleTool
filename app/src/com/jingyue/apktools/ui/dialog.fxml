@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="100.0" style="-fx-background-color: #ffff;" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.ui.ConfirmDialog">
+    <children>
+        <AnchorPane layoutX="0.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: #eeee;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="title" styleClass="label_normal" AnchorPane.leftAnchor="15" alignment="CENTER" text="提示" prefHeight="25"/>
+            </children>
+        </AnchorPane>
+        <Label fx:id="content" alignment="CENTER" styleClass="label_normal" layoutY="35" prefWidth="300" text="参数已修改，是否继续？" wrapText="true" />
+        <Button fx:id="rightbt" visible="false" styleClass="button_positive" text="是" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="50" />
+        <Button fx:id="singlebt" visible="false" styleClass="button_positive" text="确定" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="128" />
+        <Button fx:id="leftbt" visible="false" styleClass="button_negative" text="否" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="50" />
+
+    </children>
+
+    <stylesheets>
+        <URL value="@../../../../css/common.css" />
+    </stylesheets>
+</AnchorPane>

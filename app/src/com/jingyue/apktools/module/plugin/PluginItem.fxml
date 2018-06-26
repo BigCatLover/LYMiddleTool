@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+<AnchorPane fx:id="pluginContainer" prefHeight="101.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+        <CheckBox fx:id="check" alignment="CENTER" layoutX="32.0" layoutY="41.0" />
+        <AnchorPane layoutX="74.0" prefHeight="100.0" prefWidth="109.0">
+            <children>
+                <ImageView fx:id="pluginIcon" fitHeight="50.0" fitWidth="50.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" style="-fx-alignment:CENTER;" AnchorPane.leftAnchor="29.5">
+                </ImageView>
+                <Label fx:id="pluginname" alignment="CENTER" layoutY="61.0" prefHeight="30.0" prefWidth="109" styleClass="text_desc" text="插件名称" />
+            </children>
+        </AnchorPane>
+        <Label fx:id="sdkver" alignment="CENTER" layoutX="174.0" prefHeight="100.0" prefWidth="100" styleClass="text_desc" text="SDK版本" />
+        <Label fx:id="pluginver" alignment="CENTER" layoutX="276.0" prefHeight="100.0" prefWidth="100" styleClass="text_desc" text="插件版本" />
+        <Label fx:id="updatedes" alignment="CENTER" layoutX="385.0" prefHeight="100.0" prefWidth="100" styleClass="text_desc" text="更新内容" wrapText="true"/>
+        <Label fx:id="operate" alignment="CENTER" layoutX="497.0" prefHeight="100.0" prefWidth="80" style="-fx-text-fill: #62bee5;" text="下载" wrapText="true"/>
+    </children>
+
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+
+    </stylesheets>
+
+</AnchorPane>

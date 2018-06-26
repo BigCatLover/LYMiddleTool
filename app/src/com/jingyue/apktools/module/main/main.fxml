@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="main" prefHeight="600.0" prefWidth="970.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.main.MainController">
+    <children>
+        <AnchorPane prefHeight="29.0" prefWidth="880.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox stylesheets="@../../../../../css/common.css" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <children>
+                        <Button fx:id="btnMinimized" mnemonicParsing="false" onAction="#minimized" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" style="" styleClass="button_minimize" text="" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="btnFullscreen" mnemonicParsing="false" onAction="#fullScreen" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" style="" styleClass="button_fullscreen" text="" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="0.0" />
+
+                        <Button fx:id="btnClose" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close_white" text="" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <rotationAxis>
+                                <Point3D />
+                            </rotationAxis>
+                        </Button>
+                    </children>
+                </HBox>
+                <Text fx:id="loginTitle" fill="white" layoutX="14.0" layoutY="20.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="apktools" textAlignment="JUSTIFY">
+                    <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+
+        <MenuBar fx:id="menubar" layoutX="0.0" layoutY="28.0" prefHeight="30.0" style="-fx-background-color: #eee9;">
+            <menus>
+                <Menu fx:id="file" mnemonicParsing="false" text="文件">
+                    <items>
+                        <MenuItem fx:id="openfile" mnemonicParsing="false" onAction="#selectApk" text="导入游戏" />
+                        <MenuItem fx:id="compile" mnemonicParsing="false" onAction="#compileApk" text="编译" />
+                        <Menu fx:id="history" mnemonicParsing="false" text="最近导入的项目" />
+                        <MenuItem fx:id="clear" mnemonicParsing="false" onAction="#clear" text="清除" />
+                        <MenuItem mnemonicParsing="false" text="退出" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="设置">
+                    <items>
+                        <MenuItem fx:id="outputPath" mnemonicParsing="false" onAction="#setOutPutPath" text="系统设置" />
+                        <MenuItem fx:id="sign" mnemonicParsing="false" onAction="#setSign" text="签名设置" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="账户">
+                    <items>
+                        <MenuItem fx:id="userinfo" mnemonicParsing="false" text="账户信息" />
+                        <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#logout" text="退出登录" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="帮助">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="检查更新" />
+                        <MenuItem fx:id="about" mnemonicParsing="false" onAction="#about" text="关于" />
+                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#help" text="帮助" />
+                        <MenuItem mnemonicParsing="false" text="语言" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Separator orientation="HORIZONTAL" />
+        <FlowPane>
+            <Button onAction="#selectApk" styleClass="button_menu" text="导入游戏" />
+            <Button fx:id="sdkHistory" onAction="#sdkHistory" styleClass="button_menu" text="常用SDK" />
+            <Button fx:id="compile1" onAction="#compileApk" styleClass="button_menu" text="编译" />
+            <Button onAction="#sdkManager" styleClass="button_menu" text="渠道SDK管理" />
+            <Button styleClass="button_menu" text="导出错误日志" onAction="#exportLog"/>
+        </FlowPane>
+        <Separator orientation="HORIZONTAL" prefHeight="1" />
+        <HBox fx:id="mainPanel" prefHeight="526.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets left="5" right="5.0" />
+            </VBox.margin>
+            <children>
+                <VBox fx:id="listContainer" prefHeight="459.0" prefWidth="172.0">
+                    <children>
+                        <AnchorPane prefHeight="41.0" prefWidth="172.0">
+                            <children>
+                                <TextField fx:id="search" prefHeight="30.0" prefWidth="167.0" AnchorPane.leftAnchor="1" AnchorPane.rightAnchor="1" AnchorPane.topAnchor="5" />
+                                <ImageView fitHeight="28.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="7" AnchorPane.topAnchor="9">
+                                    <image>
+                                        <Image url="@../../../../../res/lyg_search_btn.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                        <ListView fx:id="pluginlist" editable="false" prefHeight="440.0" prefWidth="169.0" styleClass="listview-noborder" />
+                    </children>
+                </VBox>
+                <Separator fx:id="separatorLeft" orientation="VERTICAL" >
+                    <HBox.margin>
+                        <Insets left="5" />
+                    </HBox.margin>
+                </Separator>
+                <VBox fx:id="paramsMain" prefHeight="271.0" prefWidth="586.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <TabPane fx:id="tabPane" prefHeight="350.0" prefWidth="591.0" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets left="1" />
+                            </VBox.margin>
+                        </TabPane>
+                        <Separator orientation="HORIZONTAL" />
+                        <AnchorPane layoutX="0.0" prefHeight="184.0" prefWidth="876.0" style="-fx-background-color: #eee9;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <AnchorPane layoutY="1.0" prefHeight="35.0" prefWidth="594.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                    <children>
+                                        <Label layoutX="15.0" layoutY="10.0" text="显示输出类型：" />
+                                        <ChoiceBox fx:id="choiceBoxLogLevel" layoutX="112.0" layoutY="4.5" prefHeight="27.0" prefWidth="83.0" />
+                                        <Button fx:id="clearlog" layoutX="203.0" layoutY="3.5" mnemonicParsing="false" onAction="#clearLog" prefHeight="27.0" styleClass="button_line_blue" text="清空" />
+                                        <Button fx:id="btnExport" onAction="#exportLog" layoutX="507.0" layoutY="3.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="72.0" styleClass="button_line_blue" text="导出日志" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="3.0" />
+                                    </children>
+                                </AnchorPane>
+                                <TextArea fx:id="output" editable="false" layoutY="44.0" prefHeight="111.0" prefWidth="579.0" styleClass="textarea" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <Separator fx:id="separatorRight" orientation="VERTICAL" />
+                <AnchorPane fx:id="gameinfo" prefHeight="512.0" prefWidth="184.0">
+                    <children>
+                        <ImageView fx:id="gameIcon" fitHeight="80.0" fitWidth="80.0" layoutX="63.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        </ImageView>
+                        <Label fx:id="apkinfo" alignment="TOP_LEFT" layoutX="6.0" layoutY="100.0" prefHeight="184.0" prefWidth="186.0" wrapText="true" />
+                    </children>
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </AnchorPane>
+            </children>
+        </HBox>
+        <ProgressBar fx:id="progress" layoutX="5.0" layoutY="164.0" prefHeight="20.0" prefWidth="970.0" progress="0.5" visible="true">
+            <VBox.margin>
+                <Insets bottom="2.0" />
+            </VBox.margin>
+        </ProgressBar>
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+
+    </stylesheets>
+</VBox>

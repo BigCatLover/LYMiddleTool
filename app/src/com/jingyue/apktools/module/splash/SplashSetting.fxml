@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.splash.SplashSetting">
+    <children>
+        <AnchorPane layoutX="0.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #eeee;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="btnClose" mnemonicParsing="false" onAction="#close" pickOnBounds="true" prefHeight="30.0" prefWidth="34.0" styleClass="button_close" AnchorPane.rightAnchor="5" />
+                <Label layoutX="15.0" prefHeight="30.0" prefWidth="71.0" text="自定义闪屏" />
+            </children>
+        </AnchorPane>
+        <Button fx:id="add" layoutX="337.0" layoutY="40.0" onAction="#Add" styleClass="button_noborder" text="新增" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="40.0" />
+        <Label styleClass="label_normal" layoutY="454.0" text="上传顺序即为闪屏显示顺序，拖动图片可调整顺序" AnchorPane.bottomAnchor="60" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Button fx:id="save" onAction="#save" prefHeight="28.0" styleClass="button_positive" text="保存配置" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120" />
+        <ScrollPane fx:id="group" prefHeight="305" style="-fx-background-color: white;" fitToHeight="false" fitToWidth="true" AnchorPane.leftAnchor="38" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="66">
+            <content>
+                <FlowPane fx:id="flowpane" prefWidth="324.0"  />
+            </content>
+        </ScrollPane>
+    </children>
+    <stylesheets>
+        <URL value="@../../../../../css/common.css" />
+    </stylesheets>
+
+</AnchorPane>
