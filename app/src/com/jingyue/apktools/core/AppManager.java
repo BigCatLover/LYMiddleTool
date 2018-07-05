@@ -233,4 +233,17 @@ public class AppManager {
         return dir;
     }
 
+    /**
+     * 获取缓存目录
+     *
+     * @return
+     */
+    public static File getTempDir(){
+        File tempDir = new File(getRuntimeDir(), "Temp");
+        if(!tempDir.exists()){
+            tempDir.mkdirs();
+        }
+        return tempDir;
+    }
+
 }

@@ -82,7 +82,7 @@ public class LYgame extends ScrollPane implements BaseBuild {
 
     @Override
     public Node getSDKContent() {
-        return v;
+        return this;
     }
 
     @Override
@@ -394,4 +394,8 @@ public class LYgame extends ScrollPane implements BaseBuild {
         return true;
     }
 
+    @Override
+    public boolean needEncrypt() {
+        return baseUI.needEncrypt();
+    }
 }

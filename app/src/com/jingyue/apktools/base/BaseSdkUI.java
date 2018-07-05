@@ -18,10 +18,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -40,13 +37,14 @@ import java.util.Map;
 public class BaseSdkUI {
     public Label pkg_lb;
     private TextField pkg;
-    private String tempPkg="";
-    private HashMap<TextField,TextField> metadataList = new HashMap<>();
+    private String tempPkg = "";
+    private HashMap<TextField, TextField> metadataList = new HashMap<>();
     private VBox vb;
     private Label sdkver;
     private LocalPluginBean bean;
     private TextField key;
     private TextField value;
+    private boolean needEncrypt = false;
 
     public void setBean(LocalPluginBean bean) {
         this.bean = bean;
@@ -57,23 +55,23 @@ public class BaseSdkUI {
         pkg.setText(pkgname);
     }
 
-    public String getPkg(){
+    public String getPkg() {
         return pkg.getText().trim();
     }
 
-    public void setTempPkgSame(){
+    public void setTempPkgSame() {
         tempPkg = pkg.getText().trim();
     }
 
-    public boolean isPkgChanged(){
-        if(!tempPkg.isEmpty()&&(!tempPkg.equals(pkg.getText().trim()))){
+    public boolean isPkgChanged() {
+        if (!tempPkg.isEmpty() && (!tempPkg.equals(pkg.getText().trim()))) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public String getMetadataAsString(){
+    public String getMetadataAsString() {
         JsonArray metadata = new JsonArray();
         Iterator iter = metadataList.entrySet().iterator();
         while (iter.hasNext()) {
@@ -88,14 +86,14 @@ public class BaseSdkUI {
         return metadata.toString();
     }
 
-    public HashMap<String ,String> getMetadataAsMap(){
-        HashMap<String ,String> list = new HashMap<>();
+    public HashMap<String, String> getMetadataAsMap() {
+        HashMap<String, String> list = new HashMap<>();
         Iterator iter = metadataList.entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry entry = (Map.Entry) iter.next();
             TextField key = (TextField) entry.getKey();
             TextField val = (TextField) entry.getValue();
-            list.put( key.getText().trim(), val.getText().trim());
+            list.put(key.getText().trim(), val.getText().trim());
         }
         return list;
     }
@@ -115,10 +113,10 @@ public class BaseSdkUI {
         pkg.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean old, Boolean now) {
-                if(old&&(!now&&(!tempPkg.isEmpty()))){
-                    if(pkg.getText().trim().equals(tempPkg)){
+                if (old && (!now && (!tempPkg.isEmpty()))) {
+                    if (pkg.getText().trim().equals(tempPkg)) {
                         pkg_lb.setTextFill(Color.BLACK);
-                    }else {
+                    } else {
                         pkg_lb.setTextFill(Color.color(1, 0, 0));
                     }
                 }
@@ -128,7 +126,7 @@ public class BaseSdkUI {
         //角标配置
         Label subscript = new Label("角标配置");
         subscript.setTextFill(Color.web("#43B1E0"));
-        subscript.setFont(new Font("Microsoft YaHei",12));
+        subscript.setFont(new Font("Microsoft YaHei", 12));
         subscript.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -139,12 +137,12 @@ public class BaseSdkUI {
                     AnchorPane page = loader.load();
                     Scene scene = new Scene(page, 450, 400);
                     SubscriptSetting setting = loader.getController();
-                    setting.setPlugin(bean,Config.iconPaths.get(Config.iconPaths.size()-1)+File.separator+Config.iconname);
+                    setting.setPlugin(bean, Config.iconPaths.get(Config.iconPaths.size() - 1) + File.separator + Config.iconname);
                     Stage stg = new Stage();
                     stg.initStyle(StageStyle.UNDECORATED);
                     stg.initModality(Modality.APPLICATION_MODAL);
                     stg.setScene(scene);
-                    ViewUtils.registerDragEvent(stg,page,false);
+                    ViewUtils.registerDragEvent(stg, page, false);
                     stg.show();
                 } catch (IOException e) {
                     LogUtils.e(e);
@@ -156,7 +154,7 @@ public class BaseSdkUI {
         //闪屏配置
         Label splash = new Label("闪屏配置");
         splash.setTextFill(Color.web("#43B1E0"));
-        splash.setFont(new Font("Microsoft YaHei",12));
+        splash.setFont(new Font("Microsoft YaHei", 12));
         splash.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -165,26 +163,26 @@ public class BaseSdkUI {
                     FXMLLoader loader = new FXMLLoader();
                     loader.setBuilderFactory(new JavaFXBuilderFactory());
                     AnchorPane page;
-                    String cacheDir = Config.splashCache+File.separator+Config.GAMEID+File.separator+bean.getSdkid()+File.separator+"splash.xml";
+                    String cacheDir = Config.splashCache + File.separator + Config.GAMEID + File.separator + bean.getSdkid() + File.separator + "splash.xml";
                     String orientation = DomParseUtil.loadSplashSetting(cacheDir);
-                    if(orientation.isEmpty()){
+                    if (orientation.isEmpty()) {
                         loader.setLocation(OrientationDialog.class.getResource("OrientationDialog.fxml"));
                         page = loader.load();
                         scene = new Scene(page, 250, 120);
                         OrientationDialog dialog = loader.getController();
                         dialog.setSdk(bean);
-                    }else {
+                    } else {
                         loader.setLocation(SplashSetting.class.getResource("SplashSetting.fxml"));
                         page = loader.load();
                         scene = new Scene(page, 405, 460);
                         SplashSetting setting = loader.getController();
-                        setting.setSdk(bean,orientation);
+                        setting.setSdk(bean, orientation);
                     }
                     Stage stg = new Stage();
                     stg.initStyle(StageStyle.UNDECORATED);
                     stg.initModality(Modality.APPLICATION_MODAL);
                     stg.setScene(scene);
-                    ViewUtils.registerDragEvent(stg,page,false);
+                    ViewUtils.registerDragEvent(stg, page, false);
                     stg.show();
                 } catch (IOException e) {
                     LogUtils.e(e);
@@ -194,33 +192,50 @@ public class BaseSdkUI {
 
         grid.add(splash, 1, 1);
 
+        CheckBox encrypt = new CheckBox("加壳");
+        final File shelldata = new File(Config.shelldata,Config.GAMEID + File.separator + bean.getSdkid()+ ".xml");
+        boolean shell = DomParseUtil.getShellInfo(shelldata);
+        encrypt.setSelected(shell);
+        encrypt.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, final Boolean new_val) {
+                needEncrypt = new_val;
+                TaskManager.get().submit(new Runnable() {
+                    @Override
+                    public void run() {
+                        DomParseUtil.saveShellInfo(shelldata,new_val?"yes":"no");
+                    }
+                });
+            }
+        });
+        grid.add(encrypt, 0, 2);
+
         VBox sdk = new VBox();
         sdkver = new Label();
-        sdkver.setFont(new Font("Microsoft YaHei",14));
-        sdkver.setText("SDK版本："+bean.getSdkver());
+        sdkver.setFont(new Font("Microsoft YaHei", 14));
+        sdkver.setText("SDK版本：" + bean.getSdkver());
         sdk.getChildren().add(sdkver);
 
-        HBox hb = new HBox();
-        hb.getChildren().add(sdkParams);
-        Region gap = new Region();
-        gap.prefWidth(60);
-        hb.getChildren().add(gap);
-        hb.getChildren().add(grid);
-        sdk.getChildren().add(hb);
-        TitledPane sdktp = new TitledPane("SDK配置",sdk);
-        sdktp.setFont(new Font("Microsoft YaHei",12));
+
+        GridPane container = new GridPane();
+        container.setHgap(50);
+        container.add(sdkParams, 0, 0);
+        container.add(grid, 1, 0);
+
+        sdk.getChildren().add(container);
+        TitledPane sdktp = new TitledPane("SDK配置", sdk);
+        sdktp.setFont(new Font("Microsoft YaHei", 12));
         sdktp.setPrefWidth(1200);
         content.getChildren().add(sdktp);
 
         Label bt = new Label("+ 添加字段");
         bt.setTextFill(Color.web("#43B1E0"));
-        bt.setFont(new Font("Microsoft YaHei",12));
+        bt.setFont(new Font("Microsoft YaHei", 12));
         vb = new VBox();
         addMetaDataItem();
         vb.getChildren().add(bt);
 
-        TitledPane tp = new TitledPane("自定义字段 meta-data",vb);
-        tp.setFont(new Font("Microsoft YaHei",12));
+        TitledPane tp = new TitledPane("自定义字段 meta-data", vb);
+        tp.setFont(new Font("Microsoft YaHei", 12));
         bt.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -232,7 +247,7 @@ public class BaseSdkUI {
     }
 
     public void setParamsList(final ArrayList<MetadataBean> paramsList) {
-        if(paramsList==null||paramsList.isEmpty()){
+        if (paramsList == null || paramsList.isEmpty()) {
             return;
         }
         TaskManager.get().runOnUiThread(new Runnable() {
@@ -243,12 +258,13 @@ public class BaseSdkUI {
         });
 
     }
+
     private void addMetaDataByHistory(ArrayList<MetadataBean> paramsList) {
-        for(int i =0;i<paramsList.size();i++){
-            if(i==0){
+        for (int i = 0; i < paramsList.size(); i++) {
+            if (i == 0) {
                 key.setText(paramsList.get(i).getKey());
                 value.setText(paramsList.get(i).getValue());
-            }else {
+            } else {
                 GridPane grid = new GridPane();
                 grid.setVgap(4);
                 grid.setPadding(new Insets(5, 5, 5, 5));
@@ -261,7 +277,7 @@ public class BaseSdkUI {
                 Button del = new Button("删除");
                 del.setStyle("-fx-background-color: transparent;-fx-border-radius: 2;-fx-border-width: 1;-fx-border-color : #43B1E0;");
                 del.setTextFill(Color.web("#43B1E0"));
-                del.setFont(new Font("Microsoft YaHei",12));
+                del.setFont(new Font("Microsoft YaHei", 12));
 
                 final AnchorPane item = new AnchorPane();
                 item.getChildren().add(grid);
@@ -277,8 +293,8 @@ public class BaseSdkUI {
                         metadataList.remove(key);
                     }
                 });
-                vb.getChildren().add(metadataList.size(),item);
-                metadataList.put(key,value);
+                vb.getChildren().add(metadataList.size(), item);
+                metadataList.put(key, value);
             }
         }
     }
@@ -296,7 +312,7 @@ public class BaseSdkUI {
         Button del = new Button("删除");
         del.setStyle("-fx-background-color: transparent;-fx-border-radius: 2;-fx-border-width: 1;-fx-border-color : #43B1E0;");
         del.setTextFill(Color.web("#43B1E0"));
-        del.setFont(new Font("Microsoft YaHei",12));
+        del.setFont(new Font("Microsoft YaHei", 12));
 
         final AnchorPane item = new AnchorPane();
         item.getChildren().add(grid);
@@ -312,48 +328,52 @@ public class BaseSdkUI {
                 metadataList.remove(key);
             }
         });
-        vb.getChildren().add(metadataList.size(),item);
-        metadataList.put(key,value);
+        vb.getChildren().add(metadataList.size(), item);
+        metadataList.put(key, value);
     }
 
-    private Map<String,Integer> iconSizeMap = new HashMap<>();
+    private Map<String, Integer> iconSizeMap = new HashMap<>();
 
-    public void mergeSubscript(){
-        String cachePath = Config.subscriptCache+File.separator+Config.GAMEID+File.separator+bean.getSdkid()+File.separator+"setting.data";
+    public void mergeSubscript() {
+        String cachePath = Config.subscriptCache + File.separator + Config.GAMEID + File.separator + bean.getSdkid() + File.separator + "setting.data";
         File cache = new File(cachePath);
-        if(cache.exists()){
+        if (cache.exists()) {
             SubscriptBean b = ObjectStreamUtil.getSubscriptSetting(cachePath);
             String pos = b.getPos();
-            if(!pos.equals("none")){
-                String output = Config.subscriptCache+File.separator+Config.GAMEID+File.separator+bean.getSdkid()+File.separator+"icon.png";
+            if (!pos.equals("none")) {
+                String output = Config.subscriptCache + File.separator + Config.GAMEID + File.separator + bean.getSdkid() + File.separator + "icon.png";
                 String subscript = b.getCustSetting().get(pos);
                 int size = Config.iconPaths.size();
-                String icon = Config.iconPaths.get(size-1)+File.separator+Config.iconname;
-                for(int i=0;i<size;i++){
+                String icon = Config.iconPaths.get(size - 1) + File.separator + Config.iconname;
+                for (int i = 0; i < size; i++) {
                     String name = Config.iconPaths.get(i).substring(Config.iconPaths.get(i).lastIndexOf(File.separator));
-                    String buildPath = Config.iconPaths.get(i).replace(File.separatorChar+"bak"+File.separator,File.separatorChar+"building"+File.separator);
-                    if(name.contains("-ldpi")){
-                        iconSizeMap.put(buildPath,32);
+                    String buildPath = Config.iconPaths.get(i).replace(File.separatorChar + "bak" + File.separator, File.separatorChar + "building" + File.separator);
+                    if (name.contains("-ldpi")) {
+                        iconSizeMap.put(buildPath, 32);
                     }
-                    if(name.contains("-mdpi")){
-                        iconSizeMap.put(buildPath,48);
+                    if (name.contains("-mdpi")) {
+                        iconSizeMap.put(buildPath, 48);
                     }
-                    if(name.contains("-hdpi")){
-                        iconSizeMap.put(buildPath,72);
+                    if (name.contains("-hdpi")) {
+                        iconSizeMap.put(buildPath, 72);
                     }
-                    if(name.contains("-xhdpi")){
-                        iconSizeMap.put(buildPath,96);
+                    if (name.contains("-xhdpi")) {
+                        iconSizeMap.put(buildPath, 96);
                     }
-                    if(name.contains("-xxhdpi")){
-                        iconSizeMap.put(buildPath,144);
+                    if (name.contains("-xxhdpi")) {
+                        iconSizeMap.put(buildPath, 144);
                     }
-                    if(name.contains("-xxxhdpi")){
-                        iconSizeMap.put(buildPath,192);
+                    if (name.contains("-xxxhdpi")) {
+                        iconSizeMap.put(buildPath, 192);
                     }
                 }
-                ImageUtil.mergeImages(icon,subscript,output,iconSizeMap);
+                ImageUtil.mergeImages(icon, subscript, output, iconSizeMap);
             }
         }
+    }
+
+    public boolean needEncrypt() {
+        return needEncrypt;
     }
 
 }

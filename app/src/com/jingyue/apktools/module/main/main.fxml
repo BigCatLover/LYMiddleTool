@@ -24,9 +24,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="main" prefHeight="600.0" prefWidth="970.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.main.MainController">
+<VBox fx:id="main" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jingyue.apktools.module.main.MainController">
     <children>
-        <AnchorPane prefHeight="29.0" prefWidth="880.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="29.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox stylesheets="@../../../../../css/common.css" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                     <children>
@@ -90,12 +90,12 @@
             <Button styleClass="button_menu" text="导出错误日志" onAction="#exportLog"/>
         </FlowPane>
         <Separator orientation="HORIZONTAL" prefHeight="1" />
-        <HBox fx:id="mainPanel" prefHeight="526.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
+        <HBox fx:id="mainPanel" prefHeight="526.0" prefWidth="1080.0" VBox.vgrow="ALWAYS">
             <VBox.margin>
                 <Insets left="5" right="5.0" />
             </VBox.margin>
             <children>
-                <VBox fx:id="listContainer" prefHeight="459.0" prefWidth="172.0">
+                <VBox fx:id="listContainer" prefHeight="459.0" prefWidth="172.0" VBox.vgrow="ALWAYS">
                     <children>
                         <AnchorPane prefHeight="41.0" prefWidth="172.0">
                             <children>
@@ -115,9 +115,9 @@
                         <Insets left="5" />
                     </HBox.margin>
                 </Separator>
-                <VBox fx:id="paramsMain" prefHeight="271.0" prefWidth="586.0" HBox.hgrow="ALWAYS">
+                <VBox fx:id="paramsMain" prefHeight="271.0" prefWidth="728.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <TabPane fx:id="tabPane" prefHeight="350.0" prefWidth="591.0" VBox.vgrow="ALWAYS">
+                        <TabPane fx:id="tabPane" prefHeight="350.0" prefWidth="730.0" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets left="1" />
                             </VBox.margin>
@@ -139,11 +139,11 @@
                     </children>
                 </VBox>
                 <Separator fx:id="separatorRight" orientation="VERTICAL" />
-                <AnchorPane fx:id="gameinfo" prefHeight="512.0" prefWidth="184.0">
+                <AnchorPane fx:id="gameinfo" prefHeight="512.0" prefWidth="180.0">
                     <children>
                         <ImageView fx:id="gameIcon" fitHeight="80.0" fitWidth="80.0" layoutX="63.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                         </ImageView>
-                        <Label fx:id="apkinfo" alignment="TOP_LEFT" layoutX="6.0" layoutY="100.0" prefHeight="184.0" prefWidth="186.0" wrapText="true" />
+                        <Label fx:id="apkinfo" alignment="TOP_LEFT" layoutX="6.0" layoutY="100.0" prefHeight="184.0" prefWidth="180.0" wrapText="true" />
                     </children>
                     <HBox.margin>
                         <Insets right="5.0" />
@@ -151,7 +151,7 @@
                 </AnchorPane>
             </children>
         </HBox>
-        <ProgressBar fx:id="progress" layoutX="5.0" layoutY="164.0" prefHeight="20.0" prefWidth="970.0" progress="0.5" visible="true">
+        <ProgressBar fx:id="progress" layoutX="5.0" layoutY="164.0" prefHeight="20.0" prefWidth="1080.0" progress="0.5" visible="true">
             <VBox.margin>
                 <Insets bottom="2.0" />
             </VBox.margin>

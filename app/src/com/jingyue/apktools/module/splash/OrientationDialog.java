@@ -54,7 +54,7 @@ public class OrientationDialog implements Initializable {
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
-        DomParseUtil.saveSplashSetting(cacheDir.getPath() + File.separator + "splash.xml", group.getSelectedToggle().getUserData().toString());
+        DomParseUtil.saveSplashSetting(new File(cacheDir,"splash.xml"), group.getSelectedToggle().getUserData().toString());
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setBuilderFactory(new JavaFXBuilderFactory());

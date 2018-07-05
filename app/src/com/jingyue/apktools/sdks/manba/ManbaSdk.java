@@ -82,7 +82,7 @@ public class ManbaSdk extends ScrollPane implements BaseBuild {
 
     @Override
     public Node getSDKContent() {
-        return v;
+        return this;
     }
 
 
@@ -115,6 +115,7 @@ public class ManbaSdk extends ScrollPane implements BaseBuild {
     public Node loadFxml() {
         GridPane grid = new GridPane();
         grid.setVgap(4);
+        grid.setHgap(4);
         grid.setPadding(new Insets(5, 5, 5, 5));
         gameid_lb = new Label("游戏ID: ");
         grid.add(gameid_lb, 0, 0);
@@ -464,5 +465,10 @@ public class ManbaSdk extends ScrollPane implements BaseBuild {
             }
         }
         return gameMain;
+    }
+
+    @Override
+    public boolean needEncrypt() {
+        return baseUI.needEncrypt();
     }
 }

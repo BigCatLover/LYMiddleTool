@@ -56,6 +56,7 @@ public class Config {
     public static String tempSmali;
     public static String splashCache ;
     public static String subscriptCache ;
+    public static String shelldata;
     public static boolean isMac;
 
     /**
@@ -72,6 +73,7 @@ public class Config {
                 isMac = true;
                 basePath = System.getProperty("user.home") + File.separator + "Library"+File.separator+"Application Support"+File.separator+"lyg";
             }
+            shelldata = basePath+File.separator+"shelldata";
             cachePath = basePath+File.separator+"cache";
             configsPath =basePath+File.separator+"configs";
             sdks = basePath+File.separator+"sdks";

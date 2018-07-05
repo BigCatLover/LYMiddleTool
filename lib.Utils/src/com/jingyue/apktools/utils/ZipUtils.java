@@ -303,13 +303,14 @@ public class ZipUtils {
     /**
      * 解压指定文件
      *
-     * @param zip
+     * @param file
      * @param fileName
      * @param destPath
      * @return
      */
-    public static boolean unzip(ZipFile zip, String fileName, File destPath){
+    public static boolean unzip(File file, String fileName, File destPath){
         try {
+            ZipFile zip = new ZipFile(file);
             zip.extractFile(fileName, destPath.getAbsolutePath());
             return true;
         } catch (ZipException e) {

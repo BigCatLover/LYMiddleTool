@@ -16,7 +16,6 @@ import com.jingyue.apktools.module.download.DownloadManager;
 import com.jingyue.apktools.module.plugin.SdkManager;
 import com.jingyue.apktools.module.setting.SignSetting;
 import com.jingyue.apktools.module.setting.SystemSetting;
-import com.jingyue.apktools.sdks.manba.ManbaSdk;
 import com.jingyue.apktools.ui.DialogCallback;
 import com.jingyue.apktools.ui.DialogUtils;
 import com.jingyue.apktools.ui.FileSelecter;
@@ -294,13 +293,34 @@ public class MainController extends MainView implements Initializable {
                     return;
                 }
 
-                File jarFile = new File(Config.bakPath, Config.classesFile);
-                isSuccess = ApkToolPlus.dex2jar(tempApk,jarFile);
-                if(isSuccess){
-                    LogUtils.i("50%");
-                    progress.setProgress(0.5);
+                //todo 判断smali里是否有融合SDK
+
+                String[] filenames = new File(Config.decodePath).list();
+                for (int i=0;i<filenames.length;i++){
+                    if(filenames[i].contains("smali")) {
+                        String unzipDexName = filenames[i];//解压之后的dex
+                        if (filenames[i].equals("smali")) {
+                            unzipDexName = "classes.dex";
+                        } else {
+                            unzipDexName = filenames[i].replace("smali_", "") + ".dex";
+                        }
+                        FileHelper.delete(new File(Config.decodePath, filenames[i]));//删除文件夹
+                        File dexFile = new File(Config.decodePath, unzipDexName);
+                        if (dexFile.exists()) {
+                            dexFile.delete();
+                        }
+                        ZipUtils.unzip(tempApk,unzipDexName, dexFile.getParentFile());
+                    }
                 }
-                FileHelper.deleteDirectory(Config.decodePath+File.separator+"smali",true);
+                LogUtils.i("50%");
+                progress.setProgress(0.5);
+
+                File jarFile = new File(Config.bakPath, Config.classesFile);
+                isSuccess = ApkToolPlus.dex2jar(new File(Config.decodePath,"classes.dex"),jarFile);
+                if(isSuccess){
+                    LogUtils.i("60%");
+                    progress.setProgress(0.6);
+                }
                 checkGameAndShow();
             }
         });
@@ -701,7 +721,8 @@ public class MainController extends MainView implements Initializable {
         }
         Config.apkname = apkInfo.getPkgname();
         StringBuilder info = new StringBuilder();
-        info.append("包名 : ").append(apkInfo.getPkgname()).append("\n").append("appid:").append(apkInfo.getAppid()).append("\n");
+        info.append("包名 : ").append(apkInfo.getPkgname()).append("\n").append("appid:").append(apkInfo.getAppid()).append("\n")
+        .append("游戏ID：").append(apkInfo.getAppid()).append("\n");
         apkinfo.setText(info.toString());
     }
 

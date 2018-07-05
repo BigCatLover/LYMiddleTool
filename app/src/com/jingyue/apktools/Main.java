@@ -120,7 +120,7 @@ public class Main extends Application {
                 loader.setBuilderFactory(new JavaFXBuilderFactory());
                 loader.setLocation(MainController.class.getResource("main.fxml"));
                 VBox page = loader.load();
-                mainScreen = new Scene(page, 970, 600);
+                mainScreen = new Scene(page, 1080, 600);
                 stage.setScene(mainScreen);
                 ViewUtils.registerDragEvent(stage, page, true);
                 stage.centerOnScreen();

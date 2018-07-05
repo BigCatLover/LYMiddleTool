@@ -414,20 +414,104 @@ public class DomParseUtil {
         return flag;
     }
 
-    public static void saveSplashSetting(String path, String orientation) {
+    public static void saveSplashSetting(final File path, final String orientation) {
+        TaskManager.get().submit(new Runnable() {
+            @Override
+            public void run() {
+                if(!path.getParentFile().exists()){
+                    path.getParentFile().mkdirs();
+                }
+                try {
+                    Document document = null;
+                    if(!path.exists()){
+                        document = DocumentHelper.createDocument();
+                        Element root = document.addElement("properties");
+                        Element child = root.addElement("entry");
+                        child.addAttribute("key", "orientation");
+                        child.setText(orientation);
+                    }else {
+                        SAXReader saxReader = new SAXReader();
+                        document = saxReader.read(path);
+                        Element rootElement = document.getRootElement();
+                        List<Element> list = rootElement.elements();
+                        for (org.dom4j.Element e : list) {
+                            String key = e.attribute("key").getText();
+                            if(key.equalsIgnoreCase("orientation")){
+                                e.setText(orientation);
+                            }
+                        }
+                    }
+
+                    OutputFormat format = OutputFormat.createPrettyPrint();
+                    XMLWriter writer = new XMLWriter(new FileOutputStream(path), format);
+                    writer.write(document);
+                    writer.close();
+                } catch (Exception e) {
+                    LogUtils.e(e);
+                }
+            }
+        });
+    }
+
+    public static boolean saveShellInfo(File file,String value){
+        boolean flag = false;
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
         try {
-            Document document = DocumentHelper.createDocument();
-            Element root = document.addElement("properties");
-            Element child = root.addElement("entry");
-            child.addAttribute("key", "orientation");
-            child.setText(orientation);
+            Document document = null;
+            if(!file.exists()){
+                document = DocumentHelper.createDocument();
+                Element root = document.addElement("properties");
+                Element child = root.addElement("entry");
+                child.addAttribute("key", "needShell");
+                child.setText(value);
+            }else {
+                SAXReader saxReader = new SAXReader();
+                document = saxReader.read(file);
+                Element rootElement = document.getRootElement();
+                List<Element> list = rootElement.elements();
+                for (org.dom4j.Element e : list) {
+                    String key = e.attribute("key").getText();
+                    if(key.equalsIgnoreCase("needShell")){
+                        e.setText(value);
+                    }
+                }
+            }
+
             OutputFormat format = OutputFormat.createPrettyPrint();
-            XMLWriter writer = new XMLWriter(new FileOutputStream(path), format);
+            XMLWriter writer = new XMLWriter(new FileOutputStream(file), format);
             writer.write(document);
             writer.close();
+            flag = true;
         } catch (Exception e) {
             LogUtils.e(e);
         }
+        return flag;
+    }
+
+    public static boolean getShellInfo(File file){
+        boolean flag = false;
+        if(file.exists()){
+            try {
+                SAXReader saxReader = new SAXReader();
+                Document document = saxReader.read(file);//必须指定文件的绝对路径
+
+                //获取根节点对象
+                Element rootElement = document.getRootElement();
+                List<Element> list = rootElement.elements();
+                for (org.dom4j.Element e : list) {
+                    String key = e.attribute("key").getText();
+                    if (key.equals("needShell")) {
+                        flag = "yes".equalsIgnoreCase(e.getText());
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                LogUtils.e(e);
+            }
+        }
+        return flag;
     }
 
     public static String loadSplashSetting(String path) {
