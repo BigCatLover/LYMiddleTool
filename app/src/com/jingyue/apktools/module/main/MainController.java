@@ -7,6 +7,7 @@ import com.jingyue.apktools.bean.*;
 import com.jingyue.apktools.core.ApkToolPlus;
 import com.jingyue.apktools.core.AppManager;
 import com.jingyue.apktools.core.Callback;
+import com.jingyue.apktools.core.ShellUtil;
 import com.jingyue.apktools.core.log.LogManager;
 import com.jingyue.apktools.core.log.OutputListener;
 import com.jingyue.apktools.http.HttpCallbackListener;
@@ -518,6 +519,16 @@ public class MainController extends MainView implements Initializable {
                 bean.getInstance().merge();
                 progress.setProgress(0.2);
                 LogUtils.i("20%");
+                if(bean.getInstance().needEncrypt()){
+                    if(ShellUtil.isEncrypted(new File(Config.buildPath))){
+                        LogUtils.w("游戏已加固，请导入未加固过的apk");
+                        return;
+                    }
+                    if(!ShellUtil.updateMenifest(new File(Config.buildPath,"AndroidManifest.xml"))){
+                        LogUtils.w("修改Manifest失败");
+                        return;
+                    }
+                }
 
                 //重新编译R.java：
                 isSuccess = ApkToolPlus.reBuildRes(Config.buildPath, new Callback<Exception>() {
@@ -549,6 +560,7 @@ public class MainController extends MainView implements Initializable {
                 FileHelper.delete(new File(r));
 
                 if (!ApkToolPlus.class2dex(new File(Config.buildPath, "gen"), Config.buildPath + File.separator + "dex")) {
+                    LogUtils.w("重打包失败");
                     return;
                 }
 
@@ -588,6 +600,28 @@ public class MainController extends MainView implements Initializable {
                 progress.setProgress(0.6);
                 LogUtils.i("60%");
 
+                if(bean.getInstance().needEncrypt()){
+                    isSuccess = ShellUtil.jiagu(new File(Config.buildPath));
+                    if(!isSuccess){
+                        LogUtils.w("编译失败");
+                        return;
+                    }
+                    progress.setProgress(0.65);
+                    LogUtils.i("65%");
+
+                    isSuccess = ShellUtil.encryptDex(new File(Config.buildPath));
+                    if(!isSuccess){
+                        LogUtils.w("编译失败");
+                        return;
+                    }
+                    progress.setProgress(0.75);
+                    LogUtils.i("75%");
+
+                    ShellUtil.signatureProtect(tempApk,new File(Config.buildPath));
+                    progress.setProgress(0.8);
+                    LogUtils.i("80%");
+                }
+
                 //回编译
                 isSuccess = ApkToolPlus.recompile(new File(Config.buildPath), null, new Callback<Exception>() {
                     @Override
@@ -596,8 +630,8 @@ public class MainController extends MainView implements Initializable {
                     }
                 });
                 if (isSuccess) {
-                    progress.setProgress(0.8);
-                    LogUtils.i("80%");
+                    progress.setProgress(0.9);
+                    LogUtils.i("90%");
                 } else {
                     progress.setVisible(false);
                     return;
@@ -618,8 +652,8 @@ public class MainController extends MainView implements Initializable {
                 SignConfig info = HistoryUtil.getSelectedSign();
                 isSuccess = ApkToolPlus.signApk(recompile, outapk, info);
                 if (isSuccess) {
-                    progress.setProgress(0.9);
-                    LogUtils.i("90%");
+                    progress.setProgress(0.95);
+                    LogUtils.i("95%");
                 } else {
                     LogUtils.w("签名失败，请检查签名");
                     progress.setVisible(false);

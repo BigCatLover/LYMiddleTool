@@ -95,7 +95,7 @@
                 <Insets left="5" right="5.0" />
             </VBox.margin>
             <children>
-                <VBox fx:id="listContainer" prefHeight="459.0" prefWidth="172.0" VBox.vgrow="ALWAYS">
+                <VBox fx:id="listContainer" prefHeight="459.0" prefWidth="172.0">
                     <children>
                         <AnchorPane prefHeight="41.0" prefWidth="172.0">
                             <children>
@@ -107,7 +107,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <ListView fx:id="pluginlist" editable="false" prefHeight="440.0" prefWidth="169.0" styleClass="listview-noborder" />
+                        <ListView fx:id="pluginlist" editable="false" prefHeight="440.0" prefWidth="169.0" styleClass="listview-noborder" VBox.vgrow="ALWAYS"/>
                     </children>
                 </VBox>
                 <Separator fx:id="separatorLeft" orientation="VERTICAL" >

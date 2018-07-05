@@ -10,5 +10,7 @@
     <orderEntry type="library" name="applib" level="project" />
     <orderEntry type="module" module-name="lib.Res" />
     <orderEntry type="module" module-name="lib.Utils" />
+    <orderEntry type="module" module-name="lib.Shell" />
+    <orderEntry type="module" module-name="lib.ApkParser" />
   </component>
 </module>

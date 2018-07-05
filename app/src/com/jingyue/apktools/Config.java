@@ -19,7 +19,7 @@ public class Config {
     /**
      * 屏幕宽度
      **/
-    public static final int WINDOW_WIDTH = 970;
+    public static final int WINDOW_WIDTH = 1080;
     /**
      * 屏幕高度
      **/

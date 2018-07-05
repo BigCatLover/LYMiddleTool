@@ -20,7 +20,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -193,16 +195,17 @@ public class BaseSdkUI {
         grid.add(splash, 1, 1);
 
         CheckBox encrypt = new CheckBox("加壳");
-        final File shelldata = new File(Config.shelldata,Config.GAMEID + File.separator + bean.getSdkid()+ ".xml");
+        final File shelldata = new File(Config.shelldata, Config.GAMEID + File.separator + bean.getSdkid() + ".xml");
         boolean shell = DomParseUtil.getShellInfo(shelldata);
         encrypt.setSelected(shell);
+        needEncrypt = shell;
         encrypt.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, final Boolean new_val) {
                 needEncrypt = new_val;
                 TaskManager.get().submit(new Runnable() {
                     @Override
                     public void run() {
-                        DomParseUtil.saveShellInfo(shelldata,new_val?"yes":"no");
+                        DomParseUtil.saveShellInfo(shelldata, new_val ? "yes" : "no");
                     }
                 });
             }
